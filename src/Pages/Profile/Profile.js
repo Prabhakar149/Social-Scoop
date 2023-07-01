@@ -14,7 +14,7 @@ const Profile = () => {
   const { allPosts, loader, setLoader } = useData();
   const { user } = useAuth();
 
-  console.log(user);
+  // console.log(user);
 
   const userPosts = allPosts?.filter((post) => post.username === user.username);
 

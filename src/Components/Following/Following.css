@@ -6,6 +6,15 @@
     margin-top: 2rem;
     left: 60rem;
 }
+.scroll-container{
+    height: 15rem;
+    overflow-y: auto;
+}
+.no-suggest-txt{
+    text-align: center;
+    color: var(--gray);
+    margin-top: 10px;
+}
 .followBar-head{
     text-align: center;
     padding: 10px;
