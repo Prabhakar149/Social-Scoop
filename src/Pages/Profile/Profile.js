@@ -83,7 +83,7 @@ const Profile = () => {
 
       {userPosts?.map((post) => (
         <div key={post._id} className="cards">
-          <Card post={post} userUpdatedImage />
+          <Card post={post} />
         </div>
       ))}
     </>

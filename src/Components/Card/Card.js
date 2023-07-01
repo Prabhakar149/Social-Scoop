@@ -12,7 +12,7 @@ import { disLikePost, likePost } from "../../services/postService";
 import EditDeleteModal from "./components/EditDeleteModal";
 
 
-const Card = ({ post, userUpdatedImage }) => {
+const Card = ({ post }) => {
   const {
     _id,
     content,
@@ -33,7 +33,9 @@ const Card = ({ post, userUpdatedImage }) => {
   const { allUsers,likedPost, dispatch, trending } = useData();
   const { user, token } = useAuth();
 
-  const userDetails = allUsers?.find((person) => person.username === username);
+  // const userDetails = allUsers?.find((person) => person.username === username);
+
+  const userDetails = username === user.username ? user : allUsers?.find((person) => person.username === username)
 
   const likedPostColor = likedPost?.find(p=> p === _id) ? "red" : "gray"
 
@@ -62,8 +64,7 @@ const Card = ({ post, userUpdatedImage }) => {
       <div className="card">
         <img
           className="avtar"
-          // src={userDetails.avatarUrl}
-          src={userUpdatedImage ? user?.avatarUrl : userDetails?.avatarUrl}
+          src={userDetails.avatarUrl}
           alt={userDetails?.username}
         ></img>
         <div>
