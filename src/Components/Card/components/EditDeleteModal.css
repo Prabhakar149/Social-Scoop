@@ -1,0 +1,32 @@
+.dot-icon{
+    position: absolute;
+    left: 55rem;
+    cursor: pointer;
+    width: 20px;
+    text-align: center;
+}
+.dot-icon:hover{
+    background-color: var(--gray);
+    border-radius: 50%;
+}
+.modal{
+    box-shadow: 0px 1px 5px var(--gray);
+    width: 150px;
+    height: 75px;
+    position: absolute;
+    right: 35%;
+    background-color: #fff;
+    border-radius: 5px;
+}
+.modal-body{
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    color: var(--secondary-color);
+    font-size: 15px;
+    cursor: pointer;
+}
+.modal-body:hover{
+    background-color: var(--gray);
+    color: #fff;
+}

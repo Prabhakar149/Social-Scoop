@@ -1,0 +1,45 @@
+.following-container{
+    box-shadow: 0px 1px 5px var(--gray);
+    width: 15rem;
+    min-height: 5rem;
+    position: fixed;
+    margin-top: 2rem;
+    left: 60rem;
+}
+.followBar-head{
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    color: var(--gray);
+}
+.suggested-user-details{
+    margin: 1rem;
+    padding: 5px;
+    box-shadow: 0px 1px 1px var(--gray);
+}
+.suggested-user-img{
+    width: 35px;
+    height: 35px;
+    float: left;
+    margin-right: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.follow-user{
+    color: var(--gray);
+    font-weight: bold;
+    cursor: pointer;
+}
+.follow-btn{
+    border: 0.5px solid var(--gray);
+    width: 70px;
+    height: 20px;
+    margin-top: 5px;
+    background-color: #fff;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+.follow-btn:hover{
+    background-color: var(--gray);
+    color: #fff
+}
