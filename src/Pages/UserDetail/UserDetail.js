@@ -6,6 +6,7 @@ import Loader from "../../Components/Loader/Loader";
 import { useEffect } from "react";
 import { useAuth } from "../../Contexts/authContext";
 import { followUser, unfollowUser } from "../../services/userService";
+import {toast} from "react-toastify";
 
 const UserDetail = () => {
   const { userId } = useParams();
@@ -23,11 +24,13 @@ const UserDetail = () => {
     setTimeout(()=>setLoader(false),500);
 },[setLoader])
 
-const followBtnHandler = () =>{
+const followBtnHandler = (name) =>{
   if(followBtn === "Follow"){
-    followUser(token, userId, setUser);  
+    followUser(token, userId, setUser); 
+    toast.success("You followed,"+name); 
   }else{
     unfollowUser(token, userId, setUser);
+    toast.error("You unfollowed,"+name);
   }
 }
 
@@ -48,7 +51,7 @@ const followBtnHandler = () =>{
               {userProfile?.firstName} {userProfile?.lastName}
             </span>
             <span className="edit-btn">
-              <button onClick={followBtnHandler}
+              <button onClick={()=>followBtnHandler(userProfile.firstName)}
               >
                 {followBtn}
               </button>

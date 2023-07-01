@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import { useAuth } from "../../Contexts/authContext";
 import { followUser } from "../../services/userService";
+import {toast} from "react-toastify";
 
 const Followbar = ({ person }) => {
   const { avatarUrl, firstName, lastName, _id } = person;
@@ -11,8 +12,9 @@ const Followbar = ({ person }) => {
     ? "Unfollow"
     : "Follow";
 
-  const followBtnHandler = (userId) => {
+  const followBtnHandler = (userId,name) => {
     followUser(token, userId, setUser);
+    toast.success("You followed,"+name);
   };
 
   const userClickHandler = () =>{
@@ -34,7 +36,7 @@ const Followbar = ({ person }) => {
             </p>
           </div>
 
-          <button className="follow-btn" onClick={() => followBtnHandler(_id)}>
+          <button className="follow-btn" onClick={() => followBtnHandler(_id,firstName)}>
             {followBtn}
           </button>
         </div>

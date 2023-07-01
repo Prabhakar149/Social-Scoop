@@ -3,6 +3,7 @@ import { faX } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router";
 import { unfollowUser } from "../../../services/userService";
 import { useAuth } from "../../../Contexts/authContext";
+import {toast} from "react-toastify";
 
 const FollowModal = ({ setIsFollowModal, user }) => {
   const navigate = useNavigate();
@@ -13,8 +14,9 @@ const FollowModal = ({ setIsFollowModal, user }) => {
     setIsFollowModal(false);
   };
 
-  const unFollowBtnHandler = (userId) =>{
+  const unFollowBtnHandler = (userId,name) =>{
     unfollowUser(token, userId, setUser);
+    toast.error("You unfollowed,"+name);
   }
 
   return (
@@ -62,7 +64,7 @@ const FollowModal = ({ setIsFollowModal, user }) => {
                   </div>
                   <button
                       className="follow-btn"
-                      onClick={() => unFollowBtnHandler(person._id)}
+                      onClick={() => unFollowBtnHandler(person._id,person.firstName)}
                     >
                       Unfollow
                     </button>
