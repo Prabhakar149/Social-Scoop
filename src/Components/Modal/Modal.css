@@ -24,6 +24,9 @@
     cursor: pointer;
     color: var(--secondary-color);
 }
+.x-icon:hover{
+    color: var(--gray);
+}
 .text-area{
     margin: 1rem;
     width: 20rem;
