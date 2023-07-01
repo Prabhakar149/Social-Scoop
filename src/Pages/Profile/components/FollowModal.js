@@ -27,6 +27,7 @@ const FollowModal = ({ setIsFollowModal, user }) => {
       ></div>
 
       <div className="follow-modal">
+       <div className="scroll-container">
         <div
           className="x-icon"
           onClick={() => {
@@ -70,6 +71,7 @@ const FollowModal = ({ setIsFollowModal, user }) => {
             ))}
           </>
         )}
+        </div>
       </div>
     </>
   );

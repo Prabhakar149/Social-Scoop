@@ -65,9 +65,10 @@
     box-shadow: 0px 1px 5px var(--gray);
     width: 20rem;
     min-height: 2rem;
-    position: absolute;
+    position: fixed;
     top: 8rem;
     left: 35rem;
     background-color: #fff;
     padding: 2rem;
+    overflow-y: auto;
 }
