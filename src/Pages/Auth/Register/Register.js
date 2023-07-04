@@ -4,6 +4,7 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../../Contexts/authContext";
+import {toast} from "react-toastify"
 
 const Register = () => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ const Register = () => {
     password: "",
     firstName: "",
     lastName: "",
+    avatarUrl:"https://res.cloudinary.com/dlni6frrw/image/upload/v1688453302/avatar1_kgypvo.png"
   });
 
   const inputChangeHandler = (e) => {
@@ -31,10 +33,12 @@ const Register = () => {
         registerDetails.username,
         registerDetails.password,
         registerDetails.firstName,
-        registerDetails.lastName
+        registerDetails.lastName,
+        registerDetails.avatarUrl
       );
+      toast.success("Successfully registered !");
     } else {
-      alert("Please fill all the details !");
+      toast.warning("Please fill all the details !");
     }
   };
 

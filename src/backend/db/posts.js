@@ -93,6 +93,20 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
+    _id: "siFmxcYI1s",
+    content: "Going to India to see numrous cultures of India.",
+    mediaURL:"",
+    likes: {
+      likeCount: 3,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    username: "johndoe",
+    createdAt: "2023-03-23T08:40:08+05:30",
+    updatedAt: formatDate(),
+  },
+  {
     _id: "3XHvLP1fg",
     content: "Anyone done rafting?",
     mediaURL:"",
@@ -114,6 +128,30 @@ export const posts = [
     ],
     username: "janedoe",
     createdAt: "2023-10-01T05:23:08+05:30",
+    updatedAt: formatDate(),
+  },
+  {
+    _id: "1XHvaP1Zg",
+    content: "The weather is really awesome, can't sit in home !",
+    mediaURL:"",
+    likes: {
+      likeCount: 2,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [
+      {
+        _id: "6lImWvbmxo",
+        username: "adarshbalak",
+        text: "Wait for me, I am also coming",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
+    username: "janedoe",
+    createdAt: "2022-08-01T05:23:08+05:30",
     updatedAt: formatDate(),
   },
   {
@@ -179,6 +217,20 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
+    _id: "G-vi7lSqP9",
+    content: "It's boring day😥",
+    mediaURL: "",
+    likes: {
+      likeCount: 1,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    username: "alexmaxwell",
+    createdAt: "2021-06-20T03:10:08+05:30",
+    updatedAt: formatDate(),
+  },
+  {
     _id: "GeMUAdi9mh",
     content:
       "No matter what people tell you, words and ideas can change the world.",
@@ -218,7 +270,21 @@ export const posts = [
     createdAt: "2022-11-25T06:40:08+05:30",
     updatedAt: formatDate(),
   },
- 
+  {
+    _id: "SeMUcdi10h",
+    content:
+      "Switching to ReactJS from Angular.",
+    mediaURL: "",
+    likes: {
+      likeCount: 8,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    username: "sophiajones",
+    createdAt: "2021-02-12T12:17:08+05:30",
+    updatedAt: formatDate(),
+  },
 
  
 

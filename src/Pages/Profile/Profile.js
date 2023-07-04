@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import EditProfileModal from "./components/EditProfileModal";
 import Loader from "../../Components/Loader/Loader";
 import FollowModal from "./components/FollowModal";
+import NewpostBox from "../../Components/NewpostBox/NewpostBox";
 
 const Profile = () => {
   const [isModalOpen, setIsOpenModal] = useState(false);
@@ -67,6 +68,8 @@ const Profile = () => {
         </div>
       </div>
 
+      <NewpostBox />
+      
       {isModalOpen && (
         <EditProfileModal
           setIsOpenModal={setIsOpenModal}

@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router";
+import {toast} from "react-toastify";
 
 const authContext = createContext();
 
@@ -48,7 +49,8 @@ const AuthProvider = ({ children }) => {
     userName,
     userPassword,
     userFirstName,
-    userLastName
+    userLastName,
+    userAvatar
   ) => {
     if (userName && userPassword && userFirstName && userLastName) {
       const newUserCredentials = {
@@ -56,6 +58,7 @@ const AuthProvider = ({ children }) => {
         password: userPassword,
         firstName: userFirstName,
         lastName: userLastName,
+        avatarUrl: userAvatar
       };
       try {
         const response = await fetch("/api/auth/signup", {
@@ -74,13 +77,18 @@ const AuthProvider = ({ children }) => {
           setUser(createdUser);
           navigate("/");
         } else {
-          alert(response.statusText);
+          if(response.status === 422){
+            toast.warning("username already exists !");
+          }else{
+            toast.warning(response.statusText);
+          }
+          
         }
       } catch (err) {
         console.error(err);
       }
     } else {
-      alert("Please fill all the details !");
+      toast.warning("Please fill all the details !");
     }
   };
 

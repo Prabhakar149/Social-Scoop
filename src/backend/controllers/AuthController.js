@@ -22,9 +22,8 @@ export const signupHandler = function (schema, request) {
     if (foundUser) {
       return new Response(
         422,
-        {},
         {
-          errors: ["Unprocessable Entity. Username Already Exists."],
+          error: ["Username Already Exists."],
         }
       );
     }

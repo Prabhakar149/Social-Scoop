@@ -2,10 +2,12 @@ import { useNavigate } from "react-router";
 import { useAuth } from "../../Contexts/authContext";
 import { followUser } from "../../services/userService";
 import {toast} from "react-toastify";
+import { useData } from "../../Contexts/dataContext";
 
 const Followbar = ({ person }) => {
   const { avatarUrl, firstName, lastName, _id } = person;
   const { user, setUser, token } = useAuth();
+  const {setLoader} = useData()
   const navigate = useNavigate();
 
   const followBtn = user?.following?.find((p) => p._id === _id)
@@ -18,6 +20,8 @@ const Followbar = ({ person }) => {
   };
 
   const userClickHandler = () =>{
+    setLoader(true);
+    setTimeout(()=>setLoader(false),500);
     navigate(`/user/${_id}`)
   }
 

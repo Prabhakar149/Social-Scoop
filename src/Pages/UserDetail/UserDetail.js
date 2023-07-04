@@ -3,14 +3,13 @@ import "./UserDetail.css";
 import { useData } from "../../Contexts/dataContext";
 import Card from "../../Components/Card/Card";
 import Loader from "../../Components/Loader/Loader";
-import { useEffect } from "react";
 import { useAuth } from "../../Contexts/authContext";
 import { followUser, unfollowUser } from "../../services/userService";
 import {toast} from "react-toastify";
 
 const UserDetail = () => {
   const { userId } = useParams();
-  const {allPosts,allUsers,loader,setLoader} = useData();
+  const {allPosts,allUsers,loader} = useData();
   const {user,setUser,token} = useAuth()
 
   const userProfile = allUsers?.find(person=>person._id === userId)
@@ -19,10 +18,7 @@ const UserDetail = () => {
   const followBtn = user?.following?.find(f=>f._id === userId) ? "Unfollow" : "Follow";
   const followers = followBtn === "Unfollow" ? 1 : 0;
 
-  useEffect(()=>{
-    setLoader(true);
-    setTimeout(()=>setLoader(false),500);
-},[setLoader])
+
 
 const followBtnHandler = (name) =>{
   if(followBtn === "Follow"){

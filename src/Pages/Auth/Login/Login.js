@@ -4,6 +4,7 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import {useNavigate} from "react-router";
 import { useAuth } from "../../../Contexts/authContext";
+import {toast} from "react-toastify"
 
 const Login = () => {
 
@@ -17,7 +18,6 @@ const Login = () => {
 
   useEffect(() => {
     loginUser(loginDetails.userName, loginDetails.password);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loginDetails.userName, loginDetails.password]);
 
@@ -29,6 +29,7 @@ const Login = () => {
     }));
   };
   const loginButtonHandle = () => {
+    toast.success("Successfully logged In !");
     setLoginDtails((prev) => {
       return {
         ...prev,

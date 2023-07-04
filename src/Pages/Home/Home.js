@@ -1,3 +1,4 @@
+import "./Home.css";
 import { useEffect } from "react";
 import Card from "../../Components/Card/Card";
 import Filter from "../../Components/Filter/Filter";
@@ -26,11 +27,16 @@ const Home = () => {
       {loader && <Loader />}
       <NewpostBox />
       <Filter />
-      {userPosts?.map((post) => (
+      {
+        userPosts.length === 0 ? <p className="no-post-text">Follow some users to see feed</p> : <>
+        {userPosts?.map((post) => (
         <div key={post._id} className="cards">
           <Card post={post} />
         </div>
       ))}
+        </>
+      }
+      
     </>
   );
 };
