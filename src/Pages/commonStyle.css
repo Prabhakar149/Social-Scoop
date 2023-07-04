@@ -3,6 +3,9 @@
     justify-content: center;
     margin-top: 3rem;
 }
+.cards:last-child{
+    margin-bottom: 2rem;
+}
 .bookmark-txt{
     text-align: center;
     font-weight: bold;

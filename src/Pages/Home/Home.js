@@ -27,16 +27,17 @@ const Home = () => {
       {loader && <Loader />}
       <NewpostBox />
       <Filter />
-      {
-        userPosts.length === 0 ? <p className="no-post-text">Follow some users to see feed</p> : <>
-        {userPosts?.map((post) => (
-        <div key={post._id} className="cards">
-          <Card post={post} />
-        </div>
-      ))}
+      {userPosts.length === 0 ? (
+        <p className="no-post-text">Follow some users to see feed</p>
+      ) : (
+        <>
+          {userPosts?.map((post) => (
+            <div key={post._id} className="cards">
+              <Card post={post} />
+            </div>
+          ))}
         </>
-      }
-      
+      )}
     </>
   );
 };
