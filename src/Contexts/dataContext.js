@@ -53,6 +53,7 @@ const DataProvider = ({ children }) => {
         allPosts: state.allPosts,
         allUsers: state.allUsers,
         likedPost:state.likedPost,
+        bookMarkedPost:state.bookMarkedPost,
         dispatch,
         trending,
         setTrending,

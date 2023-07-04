@@ -17,6 +17,7 @@ const Modal = ({ setIsOpen, content, postId }) => {
   };
 
   const postBtnClickHandler = () => {
+    
     if(postData === undefined){
       toast.warning("Please give some content !")
     }

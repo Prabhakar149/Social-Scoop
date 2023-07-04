@@ -8,9 +8,13 @@ import {
   faBookmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../../Contexts/authContext";
-import { disLikePost, likePost } from "../../services/postService";
+import {
+  addPostToBookmark,
+  disLikePost,
+  likePost,
+  removePostFromBookmark,
+} from "../../services/postService";
 import EditDeleteModal from "./components/EditDeleteModal";
-
 
 const Card = ({ post }) => {
   const {
@@ -30,31 +34,49 @@ const Card = ({ post }) => {
     date.getHours(),
     date.getMinutes(),
   ];
-  const { allUsers,likedPost, dispatch, trending } = useData();
+  const { allUsers, likedPost, bookMarkedPost, dispatch, trending } = useData();
   const { user, token } = useAuth();
 
   // const userDetails = allUsers?.find((person) => person.username === username);
 
-  const userDetails = username === user.username ? user : allUsers?.find((person) => person.username === username)
+  const userDetails =
+    username === user.username
+      ? user
+      : allUsers?.find((person) => person.username === username);
 
-  const likedPostColor = likedPost?.find(p=> p === _id) ? "red" : "gray"
+  const likedPostColor = likedPost?.find((p) => p === _id) ? "red" : "gray";
+
+  const bookmarkPostColor = bookMarkedPost?.find(
+    (p) => p._id === _id
+  )
+    ? "var(--secondary-color)"
+    : "gray";
 
   const likeBtnHandler = () => {
-    
     if (likedPostColor === "red") {
       disLikePost(_id, token, dispatch, trending);
       toast.warning("You disLiked this post !");
       dispatch({
-        type:"DISLIKE_POST",
-        payload: _id
-      })
+        type: "DISLIKE_POST",
+        payload: _id,
+      });
     } else {
       likePost(_id, token, dispatch, trending);
       toast.success("You liked this post !");
       dispatch({
-        type:"LIKE_POST",
-        payload: _id
-      })
+        type: "LIKE_POST",
+        payload: _id,
+      });
+    }
+  };
+
+  const bookmarkBtnHandler = () => {
+    if(bookmarkPostColor === "gray"){
+      addPostToBookmark(_id, token, dispatch);
+      toast.success("Added this post to bookmark!");
+    }else{
+      removePostFromBookmark(_id,token,dispatch);
+      toast.warning("Removed this post from bookmark!")
     }
     
   };
@@ -73,7 +95,7 @@ const Card = ({ post }) => {
           </span>
           <span className="username">@{username}</span>
           {user.username === username && (
-            <EditDeleteModal postId={_id}  content={content}/>
+            <EditDeleteModal postId={_id} content={content} />
           )}
         </div>
         <p className="date">
@@ -84,18 +106,18 @@ const Card = ({ post }) => {
 
         <div className="card-icons">
           <span onClick={likeBtnHandler}>
-            <FontAwesomeIcon
-              icon={faHeart}
-              style={{ color: likedPostColor }}
-            />
+            <FontAwesomeIcon icon={faHeart} style={{ color: likedPostColor }} />
             <span className="count">{likeCount}</span>
           </span>
           <span>
             <FontAwesomeIcon icon={faComment} />
             <span className="count">{comments?.length}</span>
           </span>
-          <span>
-            <FontAwesomeIcon icon={faBookmark} />
+          <span onClick={bookmarkBtnHandler}>
+            <FontAwesomeIcon
+              icon={faBookmark}
+              style={{ color: bookmarkPostColor }}
+            />
           </span>
         </div>
       </div>

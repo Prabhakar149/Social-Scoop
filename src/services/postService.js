@@ -157,3 +157,40 @@ export const deletePost = async (token,postId,dispatch,trending) =>{
         console.error(err);
     }
 }
+
+export const addPostToBookmark = async(postId,token,dispatch) =>{
+    try{
+        const response = await fetch(`/api/users/bookmark/${postId}`,{
+            method:"POST",
+            headers:{
+                authorization:token
+            }
+        })
+        const {bookmarks} = await response.json()
+        dispatch({
+            type: "BOOKMARK_POST",
+            payload: [...bookmarks]
+        })
+    }catch(err){
+        console.error(err);
+    }
+}
+
+export const removePostFromBookmark = async(postId,token,dispatch) =>{
+    try{
+        const response = await fetch(`/api/users/remove-bookmark/${postId}`,{
+            method:"POST",
+            headers:{
+                authorization:token
+            }
+        })
+        const {bookmarks} = await response.json()
+        console.log("yes:",bookmarks)
+        dispatch({
+            type: "REMOVE_BOOKMARK_POST",
+            payload: bookmarks
+        })
+    }catch(err){
+        console.error(err);
+    }
+}
