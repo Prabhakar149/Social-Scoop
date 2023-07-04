@@ -49,6 +49,7 @@ const Profile = () => {
                 Edit
               </button>
             </span>
+            
           </p>
           <p className="profile-username">@{user.username}</p>
           <p className="user-details">{user.bio}</p>
@@ -69,7 +70,7 @@ const Profile = () => {
       </div>
 
       <NewpostBox />
-      
+
       {isModalOpen && (
         <EditProfileModal
           setIsOpenModal={setIsOpenModal}

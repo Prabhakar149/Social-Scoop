@@ -3,10 +3,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSort, faFireFlameCurved } from "@fortawesome/free-solid-svg-icons";
 import { useData } from "../../Contexts/dataContext";
 
+
 const Filter = () => {
-  const { allPosts, dispatch, trending, setTrending } = useData();
+  const { allPosts, dispatch, trending, setTrending, setLoader} = useData();
+
+ 
 
   const latestPostsHandle = () => {
+    setLoader(true);
+    setTimeout(() => setLoader(false), 500);
     setTrending(false);
     const sortedPostsByDate = [...allPosts].sort(
       (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
@@ -18,6 +23,8 @@ const Filter = () => {
   };
 
   const trendingPostHandle = () => {
+    setLoader(true);
+    setTimeout(() => setLoader(false), 500);
     setTrending(true);
     const sortedPostsByLikes = [...allPosts].sort(
       (a, b) => b.likes.likeCount - a.likes.likeCount

@@ -16,6 +16,7 @@ import {
 } from "../../services/postService";
 import EditDeleteModal from "./components/EditDeleteModal";
 
+
 const Card = ({ post }) => {
   const {
     _id,
@@ -46,11 +47,10 @@ const Card = ({ post }) => {
 
   const likedPostColor = likedPost?.find((p) => p === _id) ? "red" : "gray";
 
-  const bookmarkPostColor = bookMarkedPost?.find(
-    (p) => p._id === _id
-  )
+  const bookmarkPostColor = bookMarkedPost?.find((p) => p._id === _id)
     ? "var(--secondary-color)"
     : "gray";
+
 
   const likeBtnHandler = () => {
     if (likedPostColor === "red") {
@@ -71,14 +71,13 @@ const Card = ({ post }) => {
   };
 
   const bookmarkBtnHandler = () => {
-    if(bookmarkPostColor === "gray"){
+    if (bookmarkPostColor === "gray") {
       addPostToBookmark(_id, token, dispatch);
       toast.success("Added this post to bookmark!");
-    }else{
-      removePostFromBookmark(_id,token,dispatch);
-      toast.warning("Removed this post from bookmark!")
+    } else {
+      removePostFromBookmark(_id, token, dispatch);
+      toast.warning("Removed this post from bookmark!");
     }
-    
   };
 
   return (
