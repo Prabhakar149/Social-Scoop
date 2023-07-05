@@ -68,10 +68,6 @@ export const posts = [
         _id: "okzxcf",
         username: "janedoe",
         text: "I agree!! Feels like we should go for outing. What say?",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
       },
     ],
     username: "rohit45",
@@ -97,11 +93,27 @@ export const posts = [
     content: "Going to India to see numrous cultures of India.",
     mediaURL:"",
     likes: {
-      likeCount: 3,
+      likeCount: 5,
       likedBy: [],
       dislikedBy: [],
     },
-    comments: [],
+    comments: [ 
+      {
+      _id: "Mk3Dcf",
+      username: "rohit45",
+      text: "Welcome to India."      
+    },
+    {
+      _id: "7m9Zc2",
+      username: "janedoe",
+      text: "Awesome, Enjoy and explore. Happy Journey !"      
+    },
+    {
+      _id: "qk9xcA",
+      username: "adarshbalak",
+      text: "When you reaced, just let me know."      
+    },
+  ],
     username: "johndoe",
     createdAt: "2023-03-23T08:40:08+05:30",
     updatedAt: formatDate(),
@@ -120,10 +132,6 @@ export const posts = [
         _id: "6nImWvImxo",
         username: "johndoe",
         text: "Yes, you must do",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
       },
     ],
     username: "janedoe",
@@ -144,10 +152,6 @@ export const posts = [
         _id: "6lImWvbmxo",
         username: "adarshbalak",
         text: "Wait for me, I am also coming",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
       },
     ],
     username: "janedoe",
@@ -168,19 +172,11 @@ export const posts = [
         _id: "EO7iOPN9n8",
         username: "carlsmith",
         text: "Happy Birthday! Enjoy your Day!!",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
       },
       {
         _id: "QK52wf6HI1",
         username: "janedoe",
         text: "Wow! Happy Birthday!",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
       },
     ],
     username: "adarshbalak",
@@ -197,7 +193,13 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
-    comments: [],
+    comments: [
+      {
+        _id: "QK5c9B6Hu2",
+        username: "carlsmith",
+        text: "Nice bro",
+      },
+    ],
     username: "adarshbalak",
     createdAt: "2022-04-06T10:55:06+05:30",
     updatedAt: formatDate(),
@@ -259,11 +261,7 @@ export const posts = [
       {
         _id: "6nIffvImxo",
         username: "sophiajones",
-        text: "Oh! That looks Delicious!",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
+        text: "Oh! That looks Delicious!"
       },
     ],
     username: "rohit45",
@@ -280,7 +278,18 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
-    comments: [],
+    comments: [
+      {
+        _id: "6niffFmm9o",
+        username: "alexmaxwell",
+        text: "React is awesome, just go for it."
+      },
+      {
+        _id: "1BeffAmm0o",
+        username: "rohit45",
+        text: "You will really enojoy it."
+      },
+    ],
     username: "sophiajones",
     createdAt: "2021-02-12T12:17:08+05:30",
     updatedAt: formatDate(),

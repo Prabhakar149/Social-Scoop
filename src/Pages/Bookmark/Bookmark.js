@@ -19,10 +19,15 @@ const Bookmark = () => {
     <>
       {loader && <Loader />}
       {posts.length === 0 ? (
-        <p className="page-heading">You haven't bookmarked any post yet !</p>
+        <div className="heading">
+          <p className="page-heading">You haven't bookmarked any post yet !</p>
+        </div>
       ) : (
         <>
-          <p className="page-heading">Bookmarked posts</p>
+          <div className="heading">
+            <p className="page-heading">Bookmarked posts</p>
+          </div>
+
           {posts?.map((post) => (
             <div key={post._id} className="cards">
               <Card post={post} />

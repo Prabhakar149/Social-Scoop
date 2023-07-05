@@ -1,0 +1,12 @@
+.comment-container{
+    width: 30rem;
+    padding: 20px;
+    min-height: 2rem;
+}
+.comment-avtar{
+    width: 45px;
+    height: 45px;
+}
+.comment-text{
+    margin-top: 5px;
+}

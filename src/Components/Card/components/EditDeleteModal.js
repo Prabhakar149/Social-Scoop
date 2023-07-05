@@ -11,12 +11,14 @@ import { deletePost } from "../../../services/postService";
 import { useAuth } from "../../../Contexts/authContext";
 import { useData } from "../../../Contexts/dataContext";
 import Modal from "../../Modal/Modal";
+import { useNavigate } from "react-router";
 
-const EditDeleteModal = ({ postId, content }) => {
+const EditDeleteModal = ({ postId, content, isSinglePost }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const { token } = useAuth();
   const { dispatch, trending } = useData();
+  const navigate = useNavigate();
 
   const modalHandler = () => {
     setIsModalOpen(!isModalOpen);
@@ -26,6 +28,9 @@ const EditDeleteModal = ({ postId, content }) => {
     setIsModalOpen(false);
     deletePost(token, postId, dispatch, trending);
     toast.error("Your post deleted !");
+    if(isSinglePost){
+      navigate("/");
+    }
   };
 
   return (

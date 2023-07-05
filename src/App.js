@@ -14,6 +14,7 @@ import Header from "./Components/Header/Header";
 import { useAuth } from "./Contexts/authContext";
 import Following from "./Components/Following/Following";
 import UserDetail from "./Pages/UserDetail/UserDetail";
+import SinglePost from "./Pages/SinglePost/SinglePost";
 
 function App() {
   const {token} = useAuth()
@@ -67,6 +68,14 @@ function App() {
             element={
               <PrivateRoute>
                 <UserDetail />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/post/:postId"
+            element={
+              <PrivateRoute>
+                <SinglePost/>
               </PrivateRoute>
             }
           />

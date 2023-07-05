@@ -16,9 +16,9 @@ import {
 } from "../../services/postService";
 import EditDeleteModal from "./components/EditDeleteModal";
 import { useNavigate } from "react-router";
+import Comments from "./components/Comments";
 
-
-const Card = ({ post }) => {
+const Card = ({ post, isSinglePost }) => {
   const {
     _id,
     content,
@@ -36,7 +36,8 @@ const Card = ({ post }) => {
     date.getHours(),
     date.getMinutes(),
   ];
-  const { allUsers, likedPost, bookMarkedPost, dispatch, trending, setLoader } = useData();
+  const { allUsers, likedPost, bookMarkedPost, dispatch, trending, setLoader } =
+    useData();
   const { user, token } = useAuth();
   const navigate = useNavigate();
 
@@ -52,16 +53,18 @@ const Card = ({ post }) => {
   const bookmarkPostColor = bookMarkedPost?.find((p) => p._id === _id)
     ? "var(--secondary-color)"
     : "";
+  
+  
 
-  const profileClickHandler = (userDetail) =>{
+  const profileClickHandler = (userDetail) => {
     setLoader(true);
-    setTimeout(()=>setLoader(false),500);
-    if(userDetail._id === user._id){
+    setTimeout(() => setLoader(false), 500);
+    if (userDetail._id === user._id) {
       navigate("/profile");
-    }else{
+    } else {
       navigate(`/user/${userDetail._id}`);
     }
-  }
+  };
 
   const likeBtnHandler = () => {
     if (likedPostColor === "red") {
@@ -84,11 +87,15 @@ const Card = ({ post }) => {
   const bookmarkBtnHandler = () => {
     if (bookmarkPostColor === "var(--secondary-color)") {
       removePostFromBookmark(_id, token, dispatch);
-      toast.warning("Removed this post from bookmark!");   
+      toast.warning("Removed this post from bookmark!");
     } else {
       addPostToBookmark(_id, token, dispatch);
       toast.success("Added this post to bookmark!");
     }
+  };
+
+  const postClickHandler = (id) => {
+    navigate(`/post/${id}`);
   };
 
   return (
@@ -96,31 +103,39 @@ const Card = ({ post }) => {
       <div className="card">
         <img
           className="avtar"
-          src={userDetails.avatarUrl}
+          src={userDetails?.avatarUrl}
           alt={userDetails?.username}
-          onClick={()=>profileClickHandler(userDetails)}
+          onClick={() => profileClickHandler(userDetails)}
         ></img>
         <div>
-          <span className="name" onClick={()=>profileClickHandler(userDetails)}>
+          <span
+            className="name"
+            onClick={() => profileClickHandler(userDetails)}
+          >
             {userDetails?.firstName} {userDetails?.lastName}
           </span>
-          <span className="username" onClick={()=>profileClickHandler(userDetails)}>@{username}</span>
+          <span
+            className="username"
+            onClick={() => profileClickHandler(userDetails)}
+          >
+            @{username}
+          </span>
           {user.username === username && (
-            <EditDeleteModal postId={_id} content={content} />
+            <EditDeleteModal postId={_id} content={content} isSinglePost />
           )}
         </div>
         <p className="date">
           {day}/{month}/{year} {hour}:{minutes}
         </p>
 
-        <p className="content">{content}</p>
+        <p className="content" onClick={() => postClickHandler(_id)}>{content}</p>
 
         <div className="card-icons">
           <span onClick={likeBtnHandler} className="icons">
             <FontAwesomeIcon icon={faHeart} style={{ color: likedPostColor }} />
             <span className="count">{likeCount}</span>
           </span>
-          <span className="icons">
+          <span className="icons" onClick={() => postClickHandler(_id)}>
             <FontAwesomeIcon icon={faComment} />
             <span className="count">{comments?.length}</span>
           </span>
@@ -131,6 +146,20 @@ const Card = ({ post }) => {
             />
           </span>
         </div>
+
+        {isSinglePost && comments.length > 0 && (
+          <>
+            <hr className="comment-line"/>
+            <h4 className="comment-heading">Comments</h4>
+            <div>
+              {comments?.map((comment) => (
+                <div key={comment._id}>
+                  <Comments comment={comment} profileClickHandler={profileClickHandler}/>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </>
   );

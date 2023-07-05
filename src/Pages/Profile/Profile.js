@@ -24,6 +24,7 @@ const Profile = () => {
     setTimeout(() => setLoader(false), 500);
   }, [setLoader]);
 
+
   return (
     <>
       {loader && <Loader />}

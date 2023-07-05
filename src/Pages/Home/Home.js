@@ -25,7 +25,10 @@ const Home = () => {
   return (
     <>
       {loader && <Loader />}
-      <p className="page-heading">Home</p>
+      <div className="heading">
+        <p className="page-heading">Home</p>
+      </div>
+
       <NewpostBox />
       <Filter />
       {userPosts.length === 0 ? (

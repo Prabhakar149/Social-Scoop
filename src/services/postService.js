@@ -185,7 +185,7 @@ export const removePostFromBookmark = async(postId,token,dispatch) =>{
             }
         })
         const {bookmarks} = await response.json()
-        console.log("yes:",bookmarks)
+        // console.log("yes:",bookmarks)
         dispatch({
             type: "REMOVE_BOOKMARK_POST",
             payload: bookmarks
