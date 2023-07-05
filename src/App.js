@@ -20,7 +20,7 @@ function App() {
   return (
     <>
       {token && <Header />}
-      {/* {token && <Following />} */}
+      {token && <Following />}
       <div className="app">
         <ToastContainer
           position="top-right"

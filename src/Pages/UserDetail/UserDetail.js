@@ -5,34 +5,42 @@ import Card from "../../Components/Card/Card";
 import Loader from "../../Components/Loader/Loader";
 import { useAuth } from "../../Contexts/authContext";
 import { followUser, unfollowUser } from "../../services/userService";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
+import { useEffect } from "react";
 
 const UserDetail = () => {
   const { userId } = useParams();
-  const {allPosts,allUsers,loader} = useData();
-  const {user,setUser,token} = useAuth()
+  const { allPosts, allUsers, loader, setLoader } = useData();
+  const { user, setUser, token } = useAuth();
 
-  const userProfile = allUsers?.find(person=>person._id === userId)
-  const userPosts = allPosts?.filter(post=>post?.username === userProfile?.username);
+  const userProfile = allUsers?.find((person) => person._id === userId);
+  const userPosts = allPosts?.filter(
+    (post) => post?.username === userProfile?.username
+  );
 
-  const followBtn = user?.following?.find(f=>f._id === userId) ? "Unfollow" : "Follow";
+  const followBtn = user?.following?.find((f) => f._id === userId)
+    ? "Unfollow"
+    : "Follow";
   const followers = followBtn === "Unfollow" ? 1 : 0;
 
+  useEffect(() => {
+    setLoader(true);
+    setTimeout(() => setLoader(false), 1000);
+  }, [setLoader]);
 
-
-const followBtnHandler = (name) =>{
-  if(followBtn === "Follow"){
-    followUser(token, userId, setUser); 
-    toast.success("You followed,"+name); 
-  }else{
-    unfollowUser(token, userId, setUser);
-    toast.error("You unfollowed,"+name);
-  }
-}
+  const followBtnHandler = (name) => {
+    if (followBtn === "Follow") {
+      followUser(token, userId, setUser);
+      toast.success("You followed," + name);
+    } else {
+      unfollowUser(token, userId, setUser);
+      toast.error("You unfollowed," + name);
+    }
+  };
 
   return (
     <>
-      {loader && <Loader/>}
+      {loader && <Loader />}
       <div className="profile-container">
         <img
           className="profile-avtar"
@@ -47,8 +55,7 @@ const followBtnHandler = (name) =>{
               {userProfile?.firstName} {userProfile?.lastName}
             </span>
             <span className="edit-btn">
-              <button onClick={()=>followBtnHandler(userProfile.firstName)}
-              >
+              <button onClick={() => followBtnHandler(userProfile.firstName)}>
                 {followBtn}
               </button>
             </span>
@@ -60,12 +67,15 @@ const followBtnHandler = (name) =>{
             <span>{followers} Followers</span>
             <span>{userProfile?.following.length} Following</span>
           </p>
-          <a href={userProfile?.website} target="_isBlank" className="user-link">
+          <a
+            href={userProfile?.website}
+            target="_isBlank"
+            className="user-link"
+          >
             {userProfile?.website}
           </a>
         </div>
       </div>
-
 
       {userPosts?.map((post) => (
         <div key={post._id} className="cards">

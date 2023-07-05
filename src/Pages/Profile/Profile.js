@@ -30,15 +30,15 @@ const Profile = () => {
       <div className="profile-container">
         <img
           className="profile-avtar"
-          src={user.avatarUrl}
-          alt={user.username}
+          src={user?.avatarUrl}
+          alt={user?.username}
         ></img>
 
         <div className="profile-details">
           <p className="profile-name">
             <span>
               {" "}
-              {user.firstName} {user.lastName}
+              {user?.firstName} {user?.lastName}
             </span>
             <span className="edit-btn">
               <button
@@ -54,16 +54,16 @@ const Profile = () => {
           <p className="profile-username">@{user.username}</p>
           <p className="user-details">{user.bio}</p>
           <p className="user-details user-profile-details">
-            <span>{userPosts.length} Posts</span>
+            <span>{userPosts?.length} Posts</span>
             <span>0 Followers</span>
             <span
               className="following"
               onClick={() => setIsFollowModal(!isFollowModal)}
             >
-              {user.following.length} Following
+              {user?.following.length} Following
             </span>
           </p>
-          <a href={user.website} target="_isBlank" className="user-link">
+          <a href={user?.website} target="_isBlank" className="user-link">
             {user.website}
           </a>
         </div>

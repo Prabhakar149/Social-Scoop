@@ -18,6 +18,7 @@ const Explore = () =>{
     return(
         <>
         {loader && <Loader/>}
+        <p className="page-heading">Explore</p>
             {
                 allPosts?.map(post =>(
                     <div key={post._id} className="cards">

@@ -24,7 +24,7 @@
     align-items: center;
 }
 .filter-label:hover{
-    color: #fff;
+    color: #fff !important;
     background-color: var(--gray);
     border-radius: 5px;
 }

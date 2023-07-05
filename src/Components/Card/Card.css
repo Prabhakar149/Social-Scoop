@@ -11,13 +11,17 @@
     float: left;
     margin-right: 20px;
     margin-top: -7px;
+    cursor: pointer;
 }
 .name{
     font-weight: bold;
     padding-right: 0.5rem;
+    color: var(--primary-color);
+    cursor: pointer;
 }
 .username{
     color: var(--gray);
+    cursor: pointer;
 }
 .date{
     color: var(--gray);
@@ -40,8 +44,8 @@
     color: var(--gray);
     cursor: pointer;
 }
-.card-icons>span:hover{
-    color: var(--primary-color)
+.icons:hover{
+    color: var(--primary-color);
 }
 .count{
     font-size: 15px;

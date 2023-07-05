@@ -15,7 +15,7 @@ const Following = () => {
     <div className="following-container">
       <p className="followBar-head">Suggested Users</p>
       <hr />
-      {suggestedUsers.length === user.following.length ? (
+      {suggestedUsers.length === user?.following.length ? (
         <div className="no-suggest-txt">No suggestions</div>
       ) : (
         <div className="scroll-container">

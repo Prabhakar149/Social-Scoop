@@ -4,6 +4,7 @@
     cursor: pointer;
     width: 20px;
     text-align: center;
+    color: var(--secondary-color);
 }
 .dot-icon:hover{
     background-color: var(--gray);
