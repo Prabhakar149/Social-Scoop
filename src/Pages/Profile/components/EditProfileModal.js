@@ -8,38 +8,29 @@ import { useData } from "../../../Contexts/dataContext";
 
 const EditProfileModal = ({ setIsOpenModal, link, bio }) => {
   const { user, setUser, token } = useAuth();
-  const {dark} = useData();
-  const [userData, setUserData] = useState("");
-  const [imageLoader, setImageLoader] = useState(false);
+  const { dark } = useData();
+  const [userData, setUserData] = useState({
+    avatarUrl: user.avatarUrl,
+    website: user.website,
+    bio: user.bio,
+  });
+  console.log(userData);
 
   const updateBtnHandler = () => {
     editUser(userData, token, setUser);
     setIsOpenModal(false);
   };
 
-  const updateImageHandler = async (img) => {
-    try {
-      const data = new FormData();
-      data.append("file", img);
-      data.append("upload_preset", "xaywyfck");
-
-      setImageLoader(true)
-      const res = await fetch(
-        "https://api.cloudinary.com/v1_1/dlni6frrw/image/upload",
-        {
-          method: "POST",
-          body: data,
-        }
-      );
-      const { url } = await res.json();
-      setImageLoader(false)
-      setUser({ ...user, avatarUrl: url });
-      setUserData({ ...userData, avatarUrl: url });
-      
-    } catch (err) {
-      console.error("why:", err);
-    }
+  const updateImageHandler = (e) => {
+    const selectedImg = e.target.files[0];
+    const imgURL = URL.createObjectURL(selectedImg);
+    setUserData((prev) => ({
+      ...prev,
+      avatarUrl: imgURL,
+    }));
   };
+
+  console.log(userData);
 
   return (
     <>
@@ -61,27 +52,21 @@ const EditProfileModal = ({ setIsOpenModal, link, bio }) => {
 
         <div className="edit-profile">
           <p>Avatar</p>
-          {imageLoader ? (
-            <p>Updating..</p>
-          ) : (
-            <>
-              <img
-                className="edit-avtar"
-                src={user.avatarUrl}
-                alt={user.username}
-              ></img>
-              <span className="camera-icon">
-                <FontAwesomeIcon icon={faCamera} />
-              </span>
-              <span className="edit-image-input">
-                <input
-                  type="file"
-                  accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/jpg,image/webp"
-                  onChange={(e) => updateImageHandler(e.target.files[0])}
-                ></input>
-              </span>
-            </>
-          )}
+          <img
+            className="edit-avtar"
+            src={userData.avatarUrl}
+            alt={user.username}
+          ></img>
+          <span className="camera-icon">
+            <FontAwesomeIcon icon={faCamera} />
+          </span>
+          <span className="edit-image-input">
+            <input
+              type="file"
+              accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/jpg,image/webp"
+              onChange={updateImageHandler}
+            ></input>
+          </span>
         </div>
 
         <div className="edit-profile">
@@ -89,7 +74,7 @@ const EditProfileModal = ({ setIsOpenModal, link, bio }) => {
           <input
             type="text"
             className="edit-link"
-            defaultValue={link}
+            defaultValue={userData.website}
             name="website"
             onChange={(e) =>
               setUserData({ ...userData, website: e.target.value })
@@ -102,7 +87,7 @@ const EditProfileModal = ({ setIsOpenModal, link, bio }) => {
           <textarea
             className="edit-bio"
             name="bio"
-            defaultValue={bio}
+            defaultValue={userData.bio}
             onChange={(e) => setUserData({ ...userData, bio: e.target.value })}
           ></textarea>
         </div>
