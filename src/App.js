@@ -15,14 +15,17 @@ import { useAuth } from "./Contexts/authContext";
 import Following from "./Components/Following/Following";
 import UserDetail from "./Pages/UserDetail/UserDetail";
 import SinglePost from "./Pages/SinglePost/SinglePost";
+import ErrorPage from "./Pages/404/ErrorPage";
+import { useData } from "./Contexts/dataContext";
 
 function App() {
-  const {token} = useAuth()
+  const {token} = useAuth();
+  const {dark} = useData()
   return (
     <>
       {token && <Header />}
       {token && <Following />}
-      <div className="app">
+      <div className={`app ${dark && "dark-background"}`}>
         <ToastContainer
           position="top-right"
           autoClose="1000"
@@ -82,6 +85,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/mockman" element={<Mockman />} />
+          <Route path="*" element={<ErrorPage/>} />
         </Routes>
       </div>
     </>

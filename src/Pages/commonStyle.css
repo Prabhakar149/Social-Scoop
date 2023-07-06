@@ -6,14 +6,17 @@
 .cards:last-child{
     margin-bottom: 2rem;
 }
+.dark-background-cards:last-child{
+    margin-bottom: 0rem;
+}
 .heading{
     height: 3rem;
     width: 30rem;
     box-shadow: 0px 0.3px 0px 0px var(--gray);
-    margin: 10px auto;
+    margin: 0px auto;
     position:sticky;
-    top: 97px;
-    z-index: 10;
+    top: 96.4px;
+    z-index: 9;
     background-color: #fff;
 }
 .page-heading{
@@ -22,4 +25,11 @@
     padding: 15px 0;
     text-align: center;
     color: var(--gray);
+}
+.bookmark-container{
+    min-height: 100vh;
+}
+.dark-background{
+    background-color: #03172d !important;
+    color: white !important;
 }

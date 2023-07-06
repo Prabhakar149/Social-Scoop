@@ -2,14 +2,13 @@ import "../../Auth/auth.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
-import {useNavigate} from "react-router";
+import { useNavigate } from "react-router";
 import { useAuth } from "../../../Contexts/authContext";
-import {toast} from "react-toastify"
+import { toast } from "react-toastify";
 
 const Login = () => {
-
   const navigate = useNavigate();
-  const {loginUser} = useAuth();
+  const { loginUser } = useAuth();
 
   const [loginDetails, setLoginDtails] = useState({
     userName: "",
@@ -40,14 +39,14 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-container">
+    <div className="main-conatiner">
+      <div className="auth-container">
+        <div>
+          <h2 className="auth-heading">Social Scoop</h2>
+          <h3 className="auth-heading">Sign in</h3>
+        </div>
 
-      <div>
-        <h2 className="auth-heading">Social Scoop</h2>
-        <h3 className="auth-heading">Sign in</h3>
-      </div>
-
-      <form className="auth-input" onSubmit={(e) => e.preventDefault()}>
+        <form className="auth-input" onSubmit={(e) => e.preventDefault()}>
           <div className="auth-div">
             <label>User Name</label>
             <input
@@ -71,7 +70,7 @@ const Login = () => {
               onChange={inputChangeHandler}
             ></input>
           </div>
-    
+
           <div className="auth-btn">
             <button onClick={loginButtonHandle}>
               Login with Test Credentials
@@ -79,11 +78,11 @@ const Login = () => {
           </div>
           <div className="auth-text">
             <span onClick={() => navigate("/register")}>
-              Create new account{" "}
-              <FontAwesomeIcon icon={faChevronRight} />
+              Create new account <FontAwesomeIcon icon={faChevronRight} />
             </span>
           </div>
         </form>
+      </div>
     </div>
   );
 };

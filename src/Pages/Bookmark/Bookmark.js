@@ -4,13 +4,14 @@ import { useData } from "../../Contexts/dataContext";
 import Loader from "../../Components/Loader/Loader";
 
 const Bookmark = () => {
-  const { bookMarkedPost, allPosts, loader, setLoader } = useData();
+  const { bookMarkedPost, allPosts, loader, setLoader, dark } = useData();
 
   const posts = bookMarkedPost.map((post) =>
     allPosts.find((p) => p._id === post._id)
   );
 
   useEffect(() => {
+    window.scrollTo(0,0);
     setLoader(true);
     setTimeout(() => setLoader(false), 1000);
   }, [setLoader]);
@@ -18,23 +19,27 @@ const Bookmark = () => {
   return (
     <>
       {loader && <Loader />}
-      {posts.length === 0 ? (
-        <div className="heading">
-          <p className="page-heading">You haven't bookmarked any post yet !</p>
-        </div>
-      ) : (
-        <>
-          <div className="heading">
-            <p className="page-heading">Bookmarked posts</p>
+      <div className="bookmark-container">
+        {posts.length === 0 ? (
+          <div className={`heading ${dark && "dark-background"}`}>
+            <p className="page-heading">
+              You haven't bookmarked any post yet !
+            </p>
           </div>
-
-          {posts?.map((post) => (
-            <div key={post._id} className="cards">
-              <Card post={post} />
+        ) : (
+          <>
+            <div className={`heading ${dark && "dark-background"}`}>
+              <p className="page-heading">Bookmarked posts</p>
             </div>
-          ))}
-        </>
-      )}
+
+            {posts?.map((post) => (
+              <div key={post._id} className={`cards ${dark && "dark-background-cards"}`}>
+                <Card post={post} />
+              </div>
+            ))}
+          </>
+        )}
+      </div>
     </>
   );
 };

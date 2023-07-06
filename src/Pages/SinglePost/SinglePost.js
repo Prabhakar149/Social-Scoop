@@ -5,9 +5,10 @@ import { useEffect } from "react";
 import Loader from "../../Components/Loader/Loader";
 
 const SinglePost = () => {
-  const { allPosts, loader, setLoader } = useData();
+  const { allPosts, loader, setLoader, dark } = useData();
 
   useEffect(() => {
+    window.scrollTo(0,0);
     setLoader(true);
     setTimeout(() => setLoader(false), 1500);
   }, [setLoader]);
@@ -18,7 +19,7 @@ const SinglePost = () => {
   return (
     <>
       {loader && <Loader />}
-      <div className="heading">
+      <div className={`heading ${dark && "dark-background"}`}>
         <p className="page-heading">Post</p>
       </div>
 

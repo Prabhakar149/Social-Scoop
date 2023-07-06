@@ -4,7 +4,7 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../../Contexts/authContext";
-import {toast} from "react-toastify"
+import { toast } from "react-toastify";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -15,7 +15,8 @@ const Register = () => {
     password: "",
     firstName: "",
     lastName: "",
-    avatarUrl:"https://res.cloudinary.com/dlni6frrw/image/upload/v1688453302/avatar1_kgypvo.png"
+    avatarUrl:
+      "https://res.cloudinary.com/dlni6frrw/image/upload/v1688453302/avatar1_kgypvo.png",
   });
 
   const inputChangeHandler = (e) => {
@@ -27,7 +28,11 @@ const Register = () => {
   };
 
   const registerBtnHandler = () => {
-    if ( registerDetails.username && registerDetails.password && registerDetails.firstName &&registerDetails.lastName
+    if (
+      registerDetails.username &&
+      registerDetails.password &&
+      registerDetails.firstName &&
+      registerDetails.lastName
     ) {
       registerUser(
         registerDetails.username,
@@ -43,70 +48,72 @@ const Register = () => {
   };
 
   return (
-    <div className="auth-container register-auth-container">
-      <div>
-        <h2 className="auth-heading">Social Scoop</h2>
-        <h3 className="auth-heading">Sign up</h3>
-      </div>
+    <div className="main-conatiner">
+      <div className="auth-container register-auth-container">
+        <div>
+          <h2 className="auth-heading">Social Scoop</h2>
+          <h3 className="auth-heading">Sign up</h3>
+        </div>
 
-      <form className="auth-input" onSubmit={(e) => e.preventDefault()}>
-        <div className="auth-div">
-          <label>First name</label>
-          <input
-            type="text"
-            placeholder="Test"
-            value={registerDetails.firstName}
-            name="firstName"
-            autoComplete="off"
-            onChange={inputChangeHandler}
-            required
-          ></input>
-        </div>
-        <div className="auth-div">
-          <label>Last name</label>
-          <input
-            type="text"
-            placeholder="User"
-            value={registerDetails.lastName}
-            name="lastName"
-            autoComplete="off"
-            onChange={inputChangeHandler}
-            required
-          ></input>
-        </div>
-        <div className="auth-div">
-          <label>User Name</label>
-          <input
-            type="text"
-            placeholder="test123"
-            value={registerDetails.username}
-            name="username"
-            autoComplete="off"
-            onChange={inputChangeHandler}
-            required
-          ></input>
-        </div>
-        <div className="auth-div">
-          <label>Password</label>
-          <input
-            type="password"
-            placeholder="******"
-            value={registerDetails.password}
-            name="password"
-            autoComplete="off"
-            onChange={inputChangeHandler}
-            required
-          ></input>
-        </div>
-        <div className="auth-btn">
-          <button onClick={registerBtnHandler}>Register</button>
-        </div>
-        <div className="auth-text">
-          <span onClick={() => navigate("/login")}>
-            Already have an account? <FontAwesomeIcon icon={faChevronRight} />
-          </span>
-        </div>
-      </form>
+        <form className="auth-input" onSubmit={(e) => e.preventDefault()}>
+          <div className="auth-div">
+            <label>First name</label>
+            <input
+              type="text"
+              placeholder="Test"
+              value={registerDetails.firstName}
+              name="firstName"
+              autoComplete="off"
+              onChange={inputChangeHandler}
+              required
+            ></input>
+          </div>
+          <div className="auth-div">
+            <label>Last name</label>
+            <input
+              type="text"
+              placeholder="User"
+              value={registerDetails.lastName}
+              name="lastName"
+              autoComplete="off"
+              onChange={inputChangeHandler}
+              required
+            ></input>
+          </div>
+          <div className="auth-div">
+            <label>User Name</label>
+            <input
+              type="text"
+              placeholder="test123"
+              value={registerDetails.username}
+              name="username"
+              autoComplete="off"
+              onChange={inputChangeHandler}
+              required
+            ></input>
+          </div>
+          <div className="auth-div">
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder="******"
+              value={registerDetails.password}
+              name="password"
+              autoComplete="off"
+              onChange={inputChangeHandler}
+              required
+            ></input>
+          </div>
+          <div className="auth-btn">
+            <button onClick={registerBtnHandler}>Register</button>
+          </div>
+          <div className="auth-text">
+            <span onClick={() => navigate("/login")}>
+              Already have an account? <FontAwesomeIcon icon={faChevronRight} />
+            </span>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

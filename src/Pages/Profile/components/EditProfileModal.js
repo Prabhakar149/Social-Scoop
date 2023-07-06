@@ -4,9 +4,11 @@ import { faX, faCamera } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../../../Contexts/authContext";
 import { useState } from "react";
 import { editUser } from "../../../services/userService";
+import { useData } from "../../../Contexts/dataContext";
 
 const EditProfileModal = ({ setIsOpenModal, link, bio }) => {
   const { user, setUser, token } = useAuth();
+  const {dark} = useData();
   const [userData, setUserData] = useState("");
   const [imageLoader, setImageLoader] = useState(false);
 
@@ -47,7 +49,7 @@ const EditProfileModal = ({ setIsOpenModal, link, bio }) => {
           setIsOpenModal(false);
         }}
       ></div>
-      <div className="modal-container">
+      <div className={`modal-container ${dark && "dark-background"}`}>
         <div
           className="x-icon"
           onClick={() => {

@@ -10,7 +10,7 @@ import { useEffect } from "react";
 
 const UserDetail = () => {
   const { userId } = useParams();
-  const { allPosts, allUsers, loader, setLoader } = useData();
+  const { allPosts, allUsers, loader, setLoader, dark } = useData();
   const { user, setUser, token } = useAuth();
 
   const userProfile = allUsers?.find((person) => person._id === userId);
@@ -24,6 +24,7 @@ const UserDetail = () => {
   const followers = followBtn === "Unfollow" ? 1 : 0;
 
   useEffect(() => {
+    window.scrollTo(0,0);
     setLoader(true);
     setTimeout(() => setLoader(false), 1000);
   }, [setLoader]);
@@ -41,6 +42,9 @@ const UserDetail = () => {
   return (
     <>
       {loader && <Loader />}
+      <div className={`heading ${dark && "dark-background"}`}>
+        <p className="page-heading">User Profile</p>
+      </div>
       <div className="profile-container">
         <img
           className="profile-avtar"
@@ -78,7 +82,7 @@ const UserDetail = () => {
       </div>
 
       {userPosts?.map((post) => (
-        <div key={post._id} className="cards">
+        <div key={post._id} className={`cards ${dark && "dark-background-cards"}`}>
           <Card post={post} />
         </div>
       ))}

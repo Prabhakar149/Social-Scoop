@@ -66,9 +66,9 @@
     width: 20rem;
     min-height: 2rem;
     position: fixed;
-    top: 8rem;
+    top: 6rem;
     left: 35rem;
     background-color: #fff;
-    padding: 2rem;
+    padding: 3rem;
     overflow-y: auto;
 }

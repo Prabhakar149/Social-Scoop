@@ -13,22 +13,24 @@
     margin-left: 3rem;
 }
 .logo{
-    width: 9rem;
-    height: 6rem;
+    width: 6rem;
+    height: 5rem;
     cursor: pointer;
 }
+
 .header-right{
-    /* border: 1px solid; */
     padding-right: 10rem;
     display:  flex;
     gap: 6rem;
 }
 .icon{
-    /* color: var(--secondary-color); */
     font-size: 1.2rem;
 }
 .icon:hover{
     color: var(--primary-color);
+}
+.theme-icon{
+    color: var(--secondary-color);
 }
 .profile{
     display: flex;

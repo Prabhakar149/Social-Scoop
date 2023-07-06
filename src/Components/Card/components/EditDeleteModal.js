@@ -17,7 +17,7 @@ const EditDeleteModal = ({ postId, content, isSinglePost }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const { token } = useAuth();
-  const { dispatch, trending } = useData();
+  const { dispatch, trending, dark } = useData();
   const navigate = useNavigate();
 
   const modalHandler = () => {
@@ -41,7 +41,7 @@ const EditDeleteModal = ({ postId, content, isSinglePost }) => {
 
       {isModalOpen && (
         <div className="modal-bg" onClick={modalHandler}>
-        <div className="modal">
+        <div className={`modal ${dark && "dark-background"}`}>
           <p
             className="modal-body"
             onClick={() => {

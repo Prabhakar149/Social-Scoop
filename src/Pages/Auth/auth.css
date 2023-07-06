@@ -1,8 +1,13 @@
+.main-conatiner{
+    width: 100vw;
+    background-color: #fff !important;
+}
 .auth-container{
     margin: 5rem auto;
     box-shadow: 0px 5px 10px 0px var(--gray);
     width: 25rem;
     height: 24rem;
+    background-color: #fff !important;
 }
 .register-auth-container{
     height: 30rem;

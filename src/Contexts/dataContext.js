@@ -7,7 +7,8 @@ const dataContext = createContext();
 const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(dataReducer, initialState);
   const [trending,setTrending] = useState(false);
-  const [loader,setLoader] = useState(false)
+  const [loader,setLoader] = useState(false);
+  const [dark,setDark] = useState(false);
 
   const fetchAllPosts = async () => {
 
@@ -58,7 +59,9 @@ const DataProvider = ({ children }) => {
         trending,
         setTrending,
         loader,
-        setLoader
+        setLoader,
+        dark,
+        setDark
       }}
     >
       {children}

@@ -12,22 +12,23 @@ import NewpostBox from "../../Components/NewpostBox/NewpostBox";
 const Profile = () => {
   const [isModalOpen, setIsOpenModal] = useState(false);
   const [isFollowModal, setIsFollowModal] = useState(false);
-  const { allPosts, loader, setLoader } = useData();
+  const { allPosts, loader, setLoader, dark } = useData();
   const { user } = useAuth();
-
-  // console.log(user);
 
   const userPosts = allPosts?.filter((post) => post.username === user.username);
 
   useEffect(() => {
+    window.scrollTo(0,0);
     setLoader(true);
     setTimeout(() => setLoader(false), 500);
   }, [setLoader]);
 
-
   return (
     <>
       {loader && <Loader />}
+      <div className={`heading ${dark && "dark-background"}`}>
+        <p className="page-heading">My Profile</p>
+      </div>
       <div className="profile-container">
         <img
           className="profile-avtar"
@@ -50,7 +51,6 @@ const Profile = () => {
                 Edit
               </button>
             </span>
-            
           </p>
           <p className="profile-username">@{user.username}</p>
           <p className="user-details">{user.bio}</p>
@@ -82,12 +82,12 @@ const Profile = () => {
 
       {isFollowModal && (
         <>
-          <FollowModal setIsFollowModal={setIsFollowModal} user={user}/>
+          <FollowModal setIsFollowModal={setIsFollowModal} user={user} />
         </>
       )}
 
       {userPosts?.map((post) => (
-        <div key={post._id} className="cards">
+        <div key={post._id} className={`cards ${dark && "dark-background-cards"}`}>
           <Card post={post} />
         </div>
       ))}

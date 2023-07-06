@@ -9,7 +9,7 @@ import { useData } from "../../Contexts/dataContext";
 
 const Modal = ({ setIsOpen, content, postId }) => {
   const { token } = useAuth();
-  const { dispatch, trending } = useData();
+  const { dispatch, trending, dark } = useData();
   const [postData, setPostData] = useState(content);
 
   const inputChangeHandler = (e) => {
@@ -45,7 +45,7 @@ const Modal = ({ setIsOpen, content, postId }) => {
       >
         {" "}
       </div>
-      <div className="modal-container">
+      <div className={`modal-container ${dark && "dark-background"}`}>
         <div
           onClick={() => {
             setIsOpen(false);

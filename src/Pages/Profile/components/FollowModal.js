@@ -4,10 +4,12 @@ import { useNavigate } from "react-router";
 import { unfollowUser } from "../../../services/userService";
 import { useAuth } from "../../../Contexts/authContext";
 import { toast } from "react-toastify";
+import { useData } from "../../../Contexts/dataContext";
 
 const FollowModal = ({ setIsFollowModal, user }) => {
   const navigate = useNavigate();
   const { setUser, token } = useAuth();
+  const {dark} = useData();
 
   const clickHandler = (id) => {
     navigate(`/user/${id}`);
@@ -28,7 +30,7 @@ const FollowModal = ({ setIsFollowModal, user }) => {
         }}
       ></div>
 
-      <div className="follow-modal">
+      <div className={`follow-modal ${dark && "dark-background"}`}>
         <div
           className="x-icon"
           onClick={() => {
