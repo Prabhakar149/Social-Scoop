@@ -23,6 +23,7 @@ function App() {
   const {dark} = useData()
   return (
     <>
+      
       {token && <Header />}
       {token && <Following />}
       <div className={`app ${dark && "dark-background"}`}>
@@ -32,7 +33,7 @@ function App() {
           // limit="1"
           style={{ top: "5rem", right: "0rem" }}
         />
-
+        
         <Routes>
           <Route
             path="/"
@@ -88,6 +89,7 @@ function App() {
           <Route path="*" element={<ErrorPage/>} />
         </Routes>
       </div>
+      
     </>
   );
 }

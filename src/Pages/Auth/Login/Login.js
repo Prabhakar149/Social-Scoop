@@ -5,10 +5,12 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../../Contexts/authContext";
 import { toast } from "react-toastify";
+import { useData } from "../../../Contexts/dataContext";
 
 const Login = () => {
   const navigate = useNavigate();
   const { loginUser } = useAuth();
+  const { setLoader } = useData();
 
   const [loginDetails, setLoginDtails] = useState({
     userName: "",
@@ -29,6 +31,9 @@ const Login = () => {
   };
   const loginButtonHandle = () => {
     toast.success("Successfully logged In !");
+    window.scrollTo(0,0);
+    setLoader(true);
+    setTimeout(() => setLoader(false), 1000);
     setLoginDtails((prev) => {
       return {
         ...prev,

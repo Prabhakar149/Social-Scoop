@@ -5,10 +5,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../../Contexts/authContext";
 import { toast } from "react-toastify";
+import { useData } from "../../../Contexts/dataContext";
 
 const Register = () => {
   const navigate = useNavigate();
   const { registerUser } = useAuth();
+  const { setLoader } = useData();
 
   const [registerDetails, setRegisterDetails] = useState({
     username: "",
@@ -34,6 +36,11 @@ const Register = () => {
       registerDetails.firstName &&
       registerDetails.lastName
     ) {
+      toast.success("Successfully registered !");
+      window.scrollTo(0,0);
+      setLoader(true);
+      setTimeout(() => setLoader(false), 1000);
+      
       registerUser(
         registerDetails.username,
         registerDetails.password,
@@ -41,7 +48,7 @@ const Register = () => {
         registerDetails.lastName,
         registerDetails.avatarUrl
       );
-      toast.success("Successfully registered !");
+      
     } else {
       toast.warning("Please fill all the details !");
     }
