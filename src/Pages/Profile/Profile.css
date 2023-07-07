@@ -17,6 +17,7 @@
 .profile-details{
     line-height: 20px;
     margin-top: 10px;
+    width: 20rem;
 }
 .profile-name{
     font-weight: bold;
@@ -44,6 +45,7 @@
     margin-top: 15px;
     color: var(--gray);
     font-weight: bold;
+    word-break: break-all;
 }
 .user-profile-details{
     display: flex;
