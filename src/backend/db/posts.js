@@ -76,7 +76,7 @@ export const posts = [
   },
   {
     _id: "siFFxfYI1s",
-    content: "what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?what is in your pocket?",
+    content: "so tired today !",
     mediaURL:"",
     likes: {
       likeCount: 0,
@@ -206,8 +206,8 @@ export const posts = [
   },
   {
     _id: "G-Gi3lSZP9",
-    content: "When you have a dream, you’ve got to grab it and never let go.",
-    mediaURL: "",
+    content: "got an amazing specs😍",
+    mediaURL: "https://res.cloudinary.com/dlni6frrw/image/upload/v1688915612/lenskart_exwx11.jpg",
     likes: {
       likeCount: 4,
       likedBy: [],
