@@ -10,7 +10,7 @@ const Explore = () => {
   useEffect(() => {
     window.scrollTo(0,0);
     setLoader(true);
-    setTimeout(() => setLoader(false), 1000);
+    setTimeout(() => setLoader(false), 700);
   }, [setLoader]);
 
   return (

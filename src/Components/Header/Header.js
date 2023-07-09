@@ -72,7 +72,7 @@ const Header = () => {
           }}
         >
           <img src={user?.avatarUrl} alt="profile-img"></img>
-          <p>{user?.firstName}</p>
+          <p>Hi,{user?.firstName}</p>
         </div>
       </div>
     </div>
