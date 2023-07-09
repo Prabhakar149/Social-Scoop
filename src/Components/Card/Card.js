@@ -15,7 +15,7 @@ import {
   removePostFromBookmark,
 } from "../../services/postService";
 import EditDeleteModal from "./components/EditDeleteModal";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import Comments from "./components/Comments";
 
 const Card = ({ post, isSinglePost }) => {
@@ -41,6 +41,7 @@ const Card = ({ post, isSinglePost }) => {
     useData();
   const { user, token } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   // const userDetails = allUsers?.find((person) => person.username === username);
 
@@ -96,7 +97,7 @@ const Card = ({ post, isSinglePost }) => {
   };
 
   const postClickHandler = (post_id) => {
-    navigate(`/post/${post_id}`);
+    navigate(`/post/${post_id}`,{state:{from:location}});
   };
 
   return (
