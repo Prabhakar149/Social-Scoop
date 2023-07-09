@@ -28,7 +28,7 @@
     border-radius: 50%;
 }
 .x-icon:hover{
-    font-size: 1.1rem;
+    transform: scale(1.2);
     background-color: var(--gray)
 }
 .text-area{
@@ -41,7 +41,7 @@
     padding: 1rem;
     color: var(--secondary-color);
     font-size: 1.2rem;
-    resize: vertical;
+    resize: none;
 }
 .text-area:focus{
     outline:#fff

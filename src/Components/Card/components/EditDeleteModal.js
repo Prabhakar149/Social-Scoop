@@ -42,7 +42,9 @@ const EditDeleteModal = ({ postId, content, isSinglePost }) => {
 
       {isModalOpen && (
           <div className={`modal ${dark && "dark-background"}`}>
-            <FontAwesomeIcon icon={faX} className="edit-x-icon" />
+            <FontAwesomeIcon icon={faX} className="edit-x-icon"  onClick={() => {
+                setIsModalOpen(!isModalOpen);
+              }}/>
             <p
               className="modal-body"
               onClick={() => {

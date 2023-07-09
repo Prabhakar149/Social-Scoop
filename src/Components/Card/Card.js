@@ -20,6 +20,7 @@ import Comments from "./components/Comments";
 
 const Card = ({ post, isSinglePost }) => {
   const {
+     id,
     _id,
     content,
     likes: { likeCount },
@@ -94,8 +95,8 @@ const Card = ({ post, isSinglePost }) => {
     }
   };
 
-  const postClickHandler = (id) => {
-    navigate(`/post/${id}`);
+  const postClickHandler = (post_id) => {
+    navigate(`/post/${post_id}`);
   };
 
   return (
@@ -128,16 +129,16 @@ const Card = ({ post, isSinglePost }) => {
           {day}/{month}/{year} {hour}:{minutes}
         </p>
 
-        <p className="content" onClick={() => postClickHandler(_id)}>{content}</p>
+        <p className="content" onClick={() => postClickHandler(id)}>{content}</p>
 
         <div className="card-icons">
           <span onClick={likeBtnHandler} className="icons">
             <FontAwesomeIcon icon={faHeart} style={{ color: likedPostColor }} />
             <span className="count">{likeCount}</span>
           </span>
-          <span className="icons" onClick={() => postClickHandler(_id)}>
+          <span className="icons" onClick={() => postClickHandler(id)}>
             <FontAwesomeIcon icon={faComment} />
-            <span className="count">{comments?.length}</span>
+            <span className="count">{(comments?.length) ? comments?.length : 0}</span>
           </span>
           <span onClick={bookmarkBtnHandler} className="icons">
             <FontAwesomeIcon
@@ -147,7 +148,7 @@ const Card = ({ post, isSinglePost }) => {
           </span>
         </div>
 
-        {isSinglePost && comments.length > 0 && (
+        {isSinglePost && comments?.length > 0 && (
           <>
             <hr className="comment-line"/>
             <h4 className="comment-heading">Comments</h4>

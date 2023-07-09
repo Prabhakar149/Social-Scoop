@@ -14,7 +14,7 @@ const SinglePost = () => {
   }, [setLoader]);
 
   const { postId } = useParams();
-  const singlePost = allPosts?.find((post) => post?._id === postId);
+  const singlePost = allPosts?.find((post) => post?.id === postId);
 
   return (
     <>
