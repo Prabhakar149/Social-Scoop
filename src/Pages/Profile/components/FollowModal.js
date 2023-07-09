@@ -39,13 +39,14 @@ const FollowModal = ({ setIsFollowModal, user }) => {
         >
           <FontAwesomeIcon icon={faX} />
         </div>
-        <div className="scroll-container">
+        <div>
           {user?.following.length === 0 ? (
             <p style={{ color: "gray", textAlign: "center" }}>
               You don't Follow anyone !
             </p>
+
           ) : (
-            <>
+            <div className="scroll-container">
               <p style={{ color: "gray", textAlign: "center" }}>
                 You Follow below users !
               </p>
@@ -73,7 +74,7 @@ const FollowModal = ({ setIsFollowModal, user }) => {
                   </div>
                 </div>
               ))}
-            </>
+            </div>
           )}
         </div>
       </div>
