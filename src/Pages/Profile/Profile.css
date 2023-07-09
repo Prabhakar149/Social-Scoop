@@ -55,6 +55,7 @@
 .user-link{
     color: var(--secondary-color);
     text-decoration: none;
+    word-break: break-all;
 }
 .user-link:hover{
     text-decoration: underline;

@@ -111,7 +111,7 @@ export const posts = [
     {
       _id: "qk9xcA",
       username: "adarshbalak",
-      text: "When you reaced, just let me know."      
+      text: "When you reached, just let me know."      
     },
   ],
     username: "johndoe",
