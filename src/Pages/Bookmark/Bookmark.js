@@ -7,7 +7,7 @@ const Bookmark = () => {
   const { bookMarkedPost, allPosts, loader, setLoader, dark } = useData();
 
   const posts = bookMarkedPost.map((post) =>
-    allPosts.find((p) => p._id === post._id)
+    allPosts?.find((p) => p._id === post._id)
   );
 
   useEffect(() => {
