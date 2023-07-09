@@ -1,3 +1,4 @@
+import { v4 as uuid } from "uuid";
 import { useData } from "../../Contexts/dataContext";
 import "./Card.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,6 +18,7 @@ import {
 import EditDeleteModal from "./components/EditDeleteModal";
 import { useLocation, useNavigate } from "react-router";
 import Comments from "./components/Comments";
+import { useState } from "react";
 
 const Card = ({ post, isSinglePost }) => {
   const {
@@ -41,10 +43,10 @@ const Card = ({ post, isSinglePost }) => {
   const { allUsers, likedPost, bookMarkedPost, dispatch, trending, setLoader } =
     useData();
   const { user, token } = useAuth();
+  const [postComment, setPostComment] = useState(comments);
+  const [newComment, setNewComment] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
-
-  // const userDetails = allUsers?.find((person) => person.username === username);
 
   const userDetails =
     username === user.username
@@ -99,6 +101,24 @@ const Card = ({ post, isSinglePost }) => {
     navigate(`/post/${post_id}`, { state: { from: location } });
   };
 
+  const newCommentChangeHandler = (e) => {
+    setNewComment(e.target.value);
+  };
+  console.log(newComment.length)
+  const addCommentBtnHandler = () => {
+    if(newComment.length === 0){
+      toast.warning("Please give some comment!")
+    }else{   
+      toast.success("You have commented !");
+      setPostComment((prev) => [
+        ...prev,
+        { _id: uuid(), username: user.username, text: newComment },
+      ]);
+      setNewComment("");
+    }
+    
+  };
+
   return (
     <>
       <div className="card">
@@ -130,9 +150,7 @@ const Card = ({ post, isSinglePost }) => {
         </p>
 
         <div onClick={() => postClickHandler(id)}>
-          <p className="content">
-            {content}
-          </p>
+          <p className="content">{content}</p>
           {mediaURL && (
             <img className="post-img" src={mediaURL} alt="post-img"></img>
           )}
@@ -146,7 +164,7 @@ const Card = ({ post, isSinglePost }) => {
           <span className="icons" onClick={() => postClickHandler(id)}>
             <FontAwesomeIcon icon={faComment} />
             <span className="count">
-              {comments?.length ? comments?.length : 0}
+              {postComment?.length ? postComment?.length : 0}
             </span>
           </span>
           <span onClick={bookmarkBtnHandler} className="icons">
@@ -157,12 +175,29 @@ const Card = ({ post, isSinglePost }) => {
           </span>
         </div>
 
-        {isSinglePost && comments?.length > 0 && (
+        {isSinglePost && (
+          <div className="new-comment">
+            <input
+              type="text"
+              placeholder="Enter Your Comment"
+              value={newComment}
+              onChange={newCommentChangeHandler}
+              required
+            ></input>
+            <button
+              onClick={addCommentBtnHandler}
+            >
+              Add
+            </button>
+          </div>
+        )}
+
+        {isSinglePost && postComment?.length > 0 && (
           <>
             <hr className="comment-line" />
             <h4 className="comment-heading">Comments</h4>
             <div>
-              {comments?.map((comment) => (
+              {postComment?.map((comment) => (
                 <div key={comment._id}>
                   <Comments
                     comment={comment}

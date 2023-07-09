@@ -26,7 +26,7 @@ const SinglePost = () => {
   return (
     <>
       {loader && <Loader />}
-      <FontAwesomeIcon icon={faArrowLeft} className="x-icon back-btn" onClick={()=>navigate(location.state.from.pathname)}/>
+      <FontAwesomeIcon icon={faArrowLeft} className="x-icon back-btn" onClick={()=>navigate(location?.state?.from?.pathname || "/")}/>
       <div className={`heading ${dark && "dark-background"}`}>
         <p className="page-heading">Post</p>
       </div>

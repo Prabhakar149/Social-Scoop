@@ -65,6 +65,35 @@
     font-size: 15px;
     margin-left: 8px;
 }
+.new-comment{
+    padding: 1rem;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+.new-comment>input{
+    border: 0.5px solid var(--gray);
+    padding: 0.8rem 3rem;
+    border-radius: 2px;
+    font-size: 1rem;
+    color: var(--secondary-color);
+}
+.new-comment>input:focus{
+    outline: var(--secondary-color);
+}
+.new-comment>button{
+    cursor: pointer;
+    padding: 0.8rem 2rem;
+    border: 0.5px solid var(--gray);
+    background-color: #fff;
+    color: var(--gray);
+    border-radius: 2px;
+    font-size: 1rem;
+}
+.new-comment>button:hover{
+    background-color: var(--gray);
+    color: #fff;
+}
 .comment-line{
     margin-top: 2rem;
 }
