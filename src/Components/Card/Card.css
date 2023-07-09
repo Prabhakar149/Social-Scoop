@@ -38,11 +38,20 @@
 .content:hover{
     color: var(--secondary-color);
 }
+.post-img{
+    width: 99%;
+    height: 15rem;
+    margin: 2px auto;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.post-img:hover{
+    transform: scale(1.01);
+}
 .card-icons{
     display: flex;
     gap: 2rem;
     justify-content: space-evenly;
-    /* border: 1px solid; */
     margin-top: 2rem;
 }
 .card-icons>span{

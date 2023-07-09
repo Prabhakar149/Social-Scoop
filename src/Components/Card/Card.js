@@ -20,12 +20,13 @@ import Comments from "./components/Comments";
 
 const Card = ({ post, isSinglePost }) => {
   const {
-     id,
+    id,
     _id,
     content,
     likes: { likeCount },
     comments,
     username,
+    mediaURL,
     createdAt,
   } = post;
 
@@ -55,8 +56,6 @@ const Card = ({ post, isSinglePost }) => {
   const bookmarkPostColor = bookMarkedPost?.find((p) => p._id === _id)
     ? "var(--secondary-color)"
     : "";
-  
-  
 
   const profileClickHandler = (userDetail) => {
     setLoader(true);
@@ -97,7 +96,7 @@ const Card = ({ post, isSinglePost }) => {
   };
 
   const postClickHandler = (post_id) => {
-    navigate(`/post/${post_id}`,{state:{from:location}});
+    navigate(`/post/${post_id}`, { state: { from: location } });
   };
 
   return (
@@ -130,7 +129,14 @@ const Card = ({ post, isSinglePost }) => {
           {day}/{month}/{year} {hour}:{minutes}
         </p>
 
-        <p className="content" onClick={() => postClickHandler(id)}>{content}</p>
+        <div onClick={() => postClickHandler(id)}>
+          <p className="content">
+            {content}
+          </p>
+          {mediaURL && (
+            <img className="post-img" src={mediaURL} alt="post-img"></img>
+          )}
+        </div>
 
         <div className="card-icons">
           <span onClick={likeBtnHandler} className="icons">
@@ -139,7 +145,9 @@ const Card = ({ post, isSinglePost }) => {
           </span>
           <span className="icons" onClick={() => postClickHandler(id)}>
             <FontAwesomeIcon icon={faComment} />
-            <span className="count">{(comments?.length) ? comments?.length : 0}</span>
+            <span className="count">
+              {comments?.length ? comments?.length : 0}
+            </span>
           </span>
           <span onClick={bookmarkBtnHandler} className="icons">
             <FontAwesomeIcon
@@ -151,12 +159,15 @@ const Card = ({ post, isSinglePost }) => {
 
         {isSinglePost && comments?.length > 0 && (
           <>
-            <hr className="comment-line"/>
+            <hr className="comment-line" />
             <h4 className="comment-heading">Comments</h4>
             <div>
               {comments?.map((comment) => (
                 <div key={comment._id}>
-                  <Comments comment={comment} profileClickHandler={profileClickHandler}/>
+                  <Comments
+                    comment={comment}
+                    profileClickHandler={profileClickHandler}
+                  />
                 </div>
               ))}
             </div>

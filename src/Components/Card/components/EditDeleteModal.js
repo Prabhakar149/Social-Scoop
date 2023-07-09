@@ -5,7 +5,7 @@ import {
   faEllipsisVertical,
   faPenToSquare,
   faTrash,
-  faX
+  faX,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { deletePost } from "../../../services/postService";
@@ -41,14 +41,28 @@ const EditDeleteModal = ({ postId, content, isSinglePost }) => {
       </p>
 
       {isModalOpen && (
-          <div className={`modal ${dark && "dark-background"}`}>
-            <FontAwesomeIcon icon={faX} className="edit-x-icon"  onClick={() => {
+        <>
+          <div
+            className="dark-bg"
+            onClick={() => {
                 setIsModalOpen(!isModalOpen);
-              }}/>
+              }}
+          >
+            {" "}
+          </div>
+          <div className={`modal ${dark && "dark-background"}`}>
+            <FontAwesomeIcon
+              icon={faX}
+              className="edit-x-icon"
+              onClick={() => {
+                setIsModalOpen(!isModalOpen);
+              }}
+            />
             <p
               className="modal-body"
               onClick={() => {
                 setIsOpen(!isOpen);
+                setIsModalOpen(false);
               }}
             >
               <span>
@@ -63,6 +77,7 @@ const EditDeleteModal = ({ postId, content, isSinglePost }) => {
               <span>Delete</span>
             </p>
           </div>
+        </>
       )}
       {isOpen && (
         <Modal setIsOpen={setIsOpen} content={content} postId={postId} />

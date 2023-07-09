@@ -64,11 +64,12 @@ const Modal = ({ setIsOpen, content, postId }) => {
           >
           </textarea>
         </div>
+        
         <button
           className="post-btn"
           onClick={content ? editPostHandler : postBtnClickHandler}
         >
-          Post
+          {content ? "Update" : "Post"}
         </button>
       </div>
     </>

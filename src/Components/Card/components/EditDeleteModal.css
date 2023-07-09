@@ -19,6 +19,7 @@
   right: 35%;
   background-color: #fff;
   border-radius: 5px;
+  z-index: 8;
 }
 .modal-body {
   display: flex;

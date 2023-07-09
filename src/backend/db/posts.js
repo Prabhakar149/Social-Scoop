@@ -56,8 +56,8 @@ export const posts = [
   },
   {
     _id: "xhzTkUi2Nt",
-    content: "Nice Weather Today!!",
-    mediaURL: "",
+    content: "Sunday morning ! Only for Cricket 😀",
+    mediaURL: "https://res.cloudinary.com/dlni6frrw/image/upload/v1688889480/Gully-Cricket_hxg9hj.jpg",
     likes: {
       likeCount: 6,
       likedBy: [],
@@ -66,8 +66,8 @@ export const posts = [
     comments: [
       {
         _id: "okzxcf",
-        username: "janedoe",
-        text: "I agree!! Feels like we should go for outing. What say?",
+        username: "adarshbalak",
+        text: "Yes, so are you going this Sunday? Plz let me know..🤞🏾",
       },
     ],
     username: "rohit45",
@@ -90,8 +90,8 @@ export const posts = [
   },
   {
     _id: "siFmxcYI1s",
-    content: "Going to India to see numrous cultures of India.",
-    mediaURL:"",
+    content: "Going to India to explore the numrous culture of India.",
+    mediaURL:"https://res.cloudinary.com/dlni6frrw/image/upload/v1688888902/India_wq3kve.jpg",
     likes: {
       likeCount: 5,
       likedBy: [],
@@ -121,7 +121,7 @@ export const posts = [
   {
     _id: "3XHvLP1fg",
     content: "Anyone done rafting?",
-    mediaURL:"",
+    mediaURL:"https://res.cloudinary.com/dlni6frrw/image/upload/v1688888768/rafting_image8_zigjdh.jpg",
     likes: {
       likeCount: 1,
       likedBy: [],
@@ -141,7 +141,7 @@ export const posts = [
   {
     _id: "1XHvaP1Zg",
     content: "The weather is really awesome, can't sit in home !",
-    mediaURL:"",
+    mediaURL:"https://res.cloudinary.com/dlni6frrw/image/upload/v1688889048/weather_j0ul00.jpg",
     likes: {
       likeCount: 2,
       likedBy: [],
@@ -161,7 +161,7 @@ export const posts = [
   {
     _id: "3XHvLP9kC",
     content: "Yayy! Its my Birthday Today. Going to temple",
-    mediaURL:"",
+    mediaURL:"https://res.cloudinary.com/dlni6frrw/image/upload/v1688887987/cake_milzdg.jpg",
     likes: {
       likeCount: 2,
       likedBy: [],
@@ -272,7 +272,7 @@ export const posts = [
     _id: "SeMUcdi10h",
     content:
       "Switching to ReactJS from Angular.",
-    mediaURL: "",
+    mediaURL: "https://res.cloudinary.com/dlni6frrw/image/upload/v1688889570/reactjs_logo_icon_170805_rhtrg7.png",
     likes: {
       likeCount: 8,
       likedBy: [],
