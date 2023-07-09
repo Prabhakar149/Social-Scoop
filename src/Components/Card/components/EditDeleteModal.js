@@ -1,10 +1,11 @@
 import "./EditDeleteModal.css";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEllipsisVertical,
   faPenToSquare,
   faTrash,
+  faX
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { deletePost } from "../../../services/postService";
@@ -28,7 +29,7 @@ const EditDeleteModal = ({ postId, content, isSinglePost }) => {
     setIsModalOpen(false);
     deletePost(token, postId, dispatch, trending);
     toast.error("Your post deleted !");
-    if(isSinglePost){
+    if (isSinglePost) {
       navigate("/");
     }
   };
@@ -40,29 +41,30 @@ const EditDeleteModal = ({ postId, content, isSinglePost }) => {
       </p>
 
       {isModalOpen && (
-        <div className="modal-bg" onClick={modalHandler}>
-        <div className={`modal ${dark && "dark-background"}`}>
-          <p
-            className="modal-body"
-            onClick={() => {
-              setIsOpen(!isOpen);
-            }}
-          >
-            <span>
-              <FontAwesomeIcon icon={faPenToSquare} />
-            </span>
-            <span>Edit</span>
-          </p>
-          <p className="modal-body" onClick={deletePostHandler}>
-            <span>
-              <FontAwesomeIcon icon={faTrash} />
-            </span>
-            <span>Delete</span>
-          </p>
-        </div>
-        </div>
+          <div className={`modal ${dark && "dark-background"}`}>
+            <FontAwesomeIcon icon={faX} className="edit-x-icon" />
+            <p
+              className="modal-body"
+              onClick={() => {
+                setIsOpen(!isOpen);
+              }}
+            >
+              <span>
+                <FontAwesomeIcon icon={faPenToSquare} />
+              </span>
+              <span>Edit</span>
+            </p>
+            <p className="modal-body" onClick={deletePostHandler}>
+              <span>
+                <FontAwesomeIcon icon={faTrash} />
+              </span>
+              <span>Delete</span>
+            </p>
+          </div>
       )}
-      {isOpen && <Modal setIsOpen={setIsOpen} content={content} postId={postId} />}
+      {isOpen && (
+        <Modal setIsOpen={setIsOpen} content={content} postId={postId} />
+      )}
     </>
   );
 };
