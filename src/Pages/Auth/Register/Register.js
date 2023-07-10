@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 import { useAuth } from "../../../Contexts/authContext";
 import { toast } from "react-toastify";
 import { useData } from "../../../Contexts/dataContext";
+import logo from "../../../assets/social-scoop-logo1.png";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -57,8 +58,8 @@ const Register = () => {
   return (
     <div className="main-conatiner">
       <div className="auth-container register-auth-container">
-        <div>
-          <h2 className="auth-heading">Social Scoop</h2>
+        <div className="auth-heads">
+          <img src={logo} alt="logo" className="logo auth-logo"></img>
           <h3 className="auth-heading">Sign up</h3>
         </div>
 
