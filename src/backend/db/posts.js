@@ -135,7 +135,7 @@ export const posts = [
       },
     ],
     username: "janedoe",
-    createdAt: "2023-10-01T05:23:08+05:30",
+    createdAt: "2023-03-01T05:23:08+05:30",
     updatedAt: formatDate(),
   },
   {
