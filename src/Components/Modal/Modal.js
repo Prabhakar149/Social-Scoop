@@ -13,11 +13,11 @@ const Modal = ({ setIsOpen, content, postId }) => {
   const [postData, setPostData] = useState(content);
 
   const inputChangeHandler = (e) => {
-    setPostData(e.target.value);
+     setPostData(e.target.value);
   };
 
+
   const postBtnClickHandler = () => {
-    
     if(postData === undefined){
       toast.warning("Please give some content !")
     }
@@ -30,9 +30,14 @@ const Modal = ({ setIsOpen, content, postId }) => {
   };
 
   const editPostHandler = () => {
-    editPost(postData, token, postId, dispatch, trending);
-    setIsOpen(false);
-    toast.success("Successfully updated !");
+    if(!postData){
+      toast.warning("Please give some content !")
+    }else{
+      editPost(postData, token, postId, dispatch, trending);
+      setIsOpen(false);
+      toast.success("Successfully updated !");
+    }
+    
   };
 
   return (
